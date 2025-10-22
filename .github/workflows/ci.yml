@@ -2,14 +2,14 @@ name: CI - Build and Push Docker Image
 
 on:
   push:
-    branches: [ "main", "master" ]
+    branches: [ "main" ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Log in to Docker Hub
@@ -21,6 +21,5 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
-          context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/hello-devops:latest
+          tags: cogan123/hello-devops:latest
